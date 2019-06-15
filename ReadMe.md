@@ -1,4 +1,4 @@
-### Project Data Visualization
+# Project Data Visualization
 
 Visualize cancer rates (for select top cancers) in the American cities with a population higher than 700k (~20 cities) depending on certain environmental factors: coastal proximity, rainfall, sun index, elevation, average temperatures, air quality, fast food(beautiful soup web scraping), (social media awareness of cancer types), (List of Superfund sites) [aim for 20 different attributes]. 
 Population statistics borrowed from:
@@ -10,7 +10,7 @@ Separate pages to present bar/line graphs comparing data for environmental facto
 
 
 
-## Miscellaneous Links:
+### Miscellaneous Links:
 https://www.cancer.gov/research/resources/resource/130
 https://gis.cancer.gov/
 https://gis.cancer.gov/tools/uv-exposure/
