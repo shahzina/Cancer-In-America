@@ -21,7 +21,8 @@ d3.json(link, function(data) {
       L.geoJson(data).addTo(map);
 });
 
-var states = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado",
+//test data
+var states1 = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado",
   "Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois",
   "Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland",
   "Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana",
@@ -30,6 +31,7 @@ var states = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado",
   "Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah",
   "Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
 
+//test data
 var statesOccurrence = {"Alabama":1000,"Alaska":1000,"Arizona":1000,"Arkansas":1000,"California":8000,"Colorado":1000,
   "Connecticut":1000,"Delaware":1000,"Florida":1000,"Georgia":1000,"Hawaii":1000,"Idaho":1000,"Illinois":1000,
   "Indiana":1000,"Iowa":1000,"Kansas":1000,"Kentucky":1000,"Louisiana":1000,"Maine":1000,"Maryland":1000,
@@ -41,6 +43,8 @@ var statesOccurrence = {"Alabama":1000,"Alaska":1000,"Arizona":1000,"Arkansas":1
 
 
 
+
+// change test data to read from sqlite
 function chooseColor(NAME) {
   switch (statesOccurrence[NAME]) {
       case 1000:
