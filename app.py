@@ -371,7 +371,7 @@ def mortality():
         death_dict["Lung cancer incidence"] = lung_count
         death_dict["Melanoma cancer incidence"] = melanoma_count
         death_dict["NonHodgkinL cancer incidence"] = nonHodgkinL_count
-        death_dict["Oral_Pharynx cancer incidence"] = oral_Pharynx_count
+        death_dict["Oral Pharynx cancer incidence"] = oral_pharynx_count
         death_dict["Ovary cancer incidence"] = ovary_count
         death_dict["Pancreas cancer incidence"] = pancreas_count
         death_dict["Prostate cancer incidence"] = prostate_count
