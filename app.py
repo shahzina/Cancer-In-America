@@ -269,7 +269,7 @@ def staterisks():
 
 
 @app.route("/api/census")
-def stateriskdata():
+def census():
 
     census_df = pd.read_sql_table("census", "sqlite:///data/cancer.sqlite")
     census_df.set_index(['State'])
