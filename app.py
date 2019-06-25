@@ -251,7 +251,7 @@ def stateriskdata():
             'Obese BMI highschool %' : row["obese_BMI_highschool_percent"],
             'Obese BMI age 20 plus %' : row["obese_BMI_20_plus_percent"],
             'Healthy BMI age 20 plus %' : row["healthy_BMI_20_plus_percent"],
-            'No physical activity %' : row["no_physical_activity_percent"],
+            'No physical activity %' : row["no_physical_activity_percent"]
         })
 
     return jsonify(data)
