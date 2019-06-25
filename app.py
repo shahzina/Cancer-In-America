@@ -33,6 +33,9 @@ Base.prepare(db.engine, reflect=True)
 # Save references to each table
 cancer_data = Base.classes.incidence
 risk_data = Base.classes.risk
+state_data = Base.classes.census
+death_data = Base.classes.mortality
+
 
 class Cancer(db.Model):
 
@@ -229,26 +232,6 @@ def top5mort():
 def map():
     return render_template("map.html")
 
-@app.route("/map-data_incd")
-def map_data_incd():
-
-    df = pd.read_sql_table("incidence", "sqlite:///data/cancer.sqlite")
-    df.set_index(['State'])
-
-    #df.to_json(orient='index')
-    data = []
-    Dict = {}
-    c = 0
-    for i, row in df.iterrows():
-        data.append({
-
-            'State': row["State"],
-
-        })
-
-    
-
-    return jsonify(data)
 
 @app.route("/api/risks")
 def stateriskdata():
@@ -273,6 +256,7 @@ def stateriskdata():
 
     return jsonify(data)
 
+
 @app.route("/api/riskscolumns")
 def staterisks():
     """Return a list of sample names."""
@@ -282,6 +266,27 @@ def staterisks():
 
     # Return a list of the column names (sample names)
     return jsonify(list(df.columns)[:])
+
+
+@app.route("/api/census")
+def stateriskdata():
+
+    census_df = pd.read_sql_table("census", "sqlite:///data/cancer.sqlite")
+    census_df.set_index(['State'])
+    c_data = []
+
+    for i, row in df.iterrows():
+        c_data.append({
+            'State': row["State"],
+            'Crowding %': row["crowding_percent"]
+            '% With Bachelors': row["education_bachelors_percent"]
+            'Median Family Income': row["median_family_income_dollars"]
+            'Uninsured %': row["uninsured_percent"]
+            '>150 Poverty %': row["below_150_poverty_percent"]
+            'Unemployed %': row["unemployed_percent"]
+        })
+
+    return jsonify(c_data)
 
 @app.route("/api/incidencecolumns")
 def incidencecolumns():
@@ -333,7 +338,53 @@ def incidence():
 
     return jsonify(cancer_counts)
 
+@app.route("/api/mortality")
+def mortality():
 
+    # Query all cancers counts
+    results = db.session.query(death_data.State, death_data.bladder_count, 
+    	death_data.brain_count, death_data.breast_count, death_data.cervix_count,
+    	death_data.colon_rectum_count, death_data.esophagus_count,
+    	death_data.kidney_count, death_data.leukemia_count, death_data.liver_count, death_data.lung_count, 
+    	death_data.melanoma_count, death_data.nonHodgkinL_count,
+    	death_data.oral_pharynx_count, death_data.ovary_count, death_data.pancreas_count, death_data.prostate_count,
+    	death_data.stomach_count, death_data.thyroid_count, death_data.uterus_count).all()
+
+    # Create a dictionary from the row data and append to a list of all_passengers
+    death_counts = []
+
+    for State, bladder_count, brain_count, breast_count, breastinsitu_count, cervix_count, colon_rectum_count, esophagus_count, kidney_count, leukemia_count, liver_count, lung_count, melanoma_count, nonHodgkinL_count, oral_pharynx_count, ovary_count, pancreas_count, prostate_count, stomach_count, thyroid_count, uterus_count in results:
+        death_dict = {}
+        death_dict["State"] = State
+        death_dict["Bladder cancer incidence"] = bladder_count
+        death_dict["Brain cancer incidence"] = brain_count
+        death_dict["Breast cancer incidence"] = breast_count
+        death_dict["Breastinsitu cancer incidence"] = breastinsitu_count
+        death_dict["Cervix cancer incidence"] = cervix_count
+        death_dict["colon rectum cancer incidence"] = colon_rectum_count
+        death_dict["Esophagus cancer incidence"] = esophagus_count
+        death_dict["Kidney cancer incidence"] = kidney_count
+        death_dict["Leukemia cancer incidence"] = leukemia_count
+        death_dict["Liver cancer incidence"] = liver_count
+        death_dict["Lung cancer incidence"] = lung_count
+        death_dict["Melanoma cancer incidence"] = melanoma_count
+        death_dict["NonHodgkinL cancer incidence"] = nonHodgkinL_count
+        death_dict["Oral_Pharynx cancer incidence"] = oral_Pharynx_count
+        death_dict["Ovary cancer incidence"] = ovary_count
+        death_dict["Pancreas cancer incidence"] = pancreas_count
+        death_dict["Prostate cancer incidence"] = prostate_count
+        death_dict["Stomach cancer incidence"] = stomach_count
+        death_dict["Thyroid cancer incidence"] = thyroid_count
+        death_dict["Uterus cancer incidence"] = uterus_count
+        cancer_counts.append(death_dict)
+
+    return jsonify(death_counts)
+
+
+
+
+
+    return jsonify(risk_counts)
 
 if __name__ == "__main__":
     app.run()
