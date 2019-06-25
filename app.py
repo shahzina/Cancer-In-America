@@ -274,8 +274,10 @@ def census():
     census_df = pd.read_sql_table("census", "sqlite:///data/cancer.sqlite")
     census_df.set_index(['State'])
     c_data = []
+    Dict = {}
+    c = 0
 
-    for i, row in df.iterrows():
+    for i, row in census_df.iterrows():
         c_data.append({
             'State': row["State"],
             'Crowding %': row["crowding_percent"],
@@ -376,15 +378,11 @@ def mortality():
         death_dict["Stomach cancer incidence"] = stomach_count
         death_dict["Thyroid cancer incidence"] = thyroid_count
         death_dict["Uterus cancer incidence"] = uterus_count
-        cancer_counts.append(death_dict)
+        death_counts.append(death_dict)
 
     return jsonify(death_counts)
 
 
-
-
-
-    return jsonify(risk_counts)
 
 if __name__ == "__main__":
     app.run()
