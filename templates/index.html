@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>US Counties</title>
+
+    <!-- Leaflet JS & CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+    crossorigin=""></script>
+
+    <!-- d3 JavaScript -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+  </head>
+  <body>
+    <div class = "container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <!-- <a class="navbar-brand" href="index.html">Home</a> -->
+        </div>
+
+        <!-- <nav class="navbar navbar-default"> -->
+          <nav class="navbar navbar-expand-sm bg-light">
+          <a class="navbar-brand" href="#">US Cancer Data </a>
+          <ul class = "nav nav-tabs-right">
+            <li class="dropdown">
+                <button class="btn btn-primary dropdown-toggle pull-right" type="button" data-toggle="dropdown">Menu
+                <span class="caret"></span></button>
+                <!-- <ul class="dropdown-menu">
+                <li><a href="MaxTemp.html">Maximum Temperature</a></li>
+                <li><a href="Humidity.html">Humidity</a></li>
+                <li><a href="cloudiness.html">Cloudiness</a></li>
+                <li><a href="windspeed.html">Windspeed</a></li>
+                </ul> -->
+            </li>
+
+            <!-- <li class = "nav-item">
+              <a class = "nav-link" href = "comparisions.html"> Comparision </a>
+            </li>
+            <li class = "nav-item">
+              <a class = "nav-link" href = "data.html"> Data </a>
+            </li> -->
+
+          </ul>
+         </nav>
+      <div class = "row">
+      <div class = "col-sm-2"></div>
+    <div class = "col-sm-8">
+      <!-- <h1> Analysis of Cancer Incidence and Mortality in the US.  </h1> -->
+    </div>
+
+    <div class = "row">
+      <div class = "col-sm-8">
+        
+      </div>
+    </div>
+
+
+    <div class = "row">
+      <div class = "col-sm-4"></div>
+      <div class = "col-sm-8">
+        <img src="image1.jpg" class="mx-auto d-block" alt="Cancer Ratio" width="500" height="300"> 
+      </div>
+    </div>
+
+    <!-- <div class = "row">
+      <div class = "col-sm-12">
+       <img src="image3.jpeg" class="rounded" alt="Cancer Prediction" width="600" height="200">
+      </div>
+    </div> -->
+
+
+    <!-- map div -->
+    <!-- <div id="map"></div> -->
+    <!-- API key -->
+    <script type="text/javascript" src="static/js/config.js"></script>
+      <!-- JS  -->
+    <script type="text/javascript" src="static/js/logic.js"></script> 
+
+  </body>
+</html>
