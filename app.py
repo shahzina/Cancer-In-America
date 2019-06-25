@@ -5,6 +5,11 @@ from flask import (
     Flask,
     render_template,
     jsonify)
+from flask_sqlalchemy import SQLAlchemy
+import sqlalchemy
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
 
 #################################################
 # Flask Setup
@@ -20,6 +25,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data/cancer.sqlite"
 
 db = SQLAlchemy(app)
 
+# reflect an existing database into a new model
+Base = automap_base()
+# reflect the tables
+Base.prepare(db.engine, reflect=True)
+
+# Save references to each table
+cancer_data = Base.classes.incidence
+risk_data = Base.classes.risk
 
 class Cancer(db.Model):
 
@@ -237,3 +250,90 @@ def map_data_incd():
 
     return jsonify(data)
 
+@app.route("/api/risks")
+def stateriskdata():
+
+    df = pd.read_sql_table("risk", "sqlite:///data/cancer.sqlite")
+    df.set_index(['State'])
+    data = []
+    Dict = {}
+    c = 0
+    for i, row in df.iterrows():
+        data.append({
+            'State': row["State"],
+            'Smoking %': row["smokers_percent"],
+            'Veggies %' : row["veggies_percent"],
+            'Fruit %' : row["fruit_percent"],
+            'Overweight BMI %' : row["overweight_BMI_percent"],
+            'Obese BMI highschool %' : row["obese_BMI_highschool_percent"],
+            'Obese BMI age 20 plus %' : row["obese_BMI_20_plus_percent"],
+            'Healthy BMI age 20 plus %' : row["healthy_BMI_20_plus_percent"],
+            'No physical activity %' : row["no_physical_activity_percent"],
+        })
+
+    return jsonify(data)
+
+@app.route("/api/riskscolumns")
+def staterisks():
+    """Return a list of sample names."""
+    # Use Pandas to perform the sql query
+    stmt = db.session.query(risk_data).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+
+    # Return a list of the column names (sample names)
+    return jsonify(list(df.columns)[:])
+
+@app.route("/api/incidencecolumns")
+def incidencecolumns():
+    """Return a list of sample names."""
+    # Use Pandas to perform the sql query
+    stmt = db.session.query(cancer_data).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+
+    # Return a list of the column names (sample names)
+    return jsonify(list(df.columns)[:])
+
+@app.route("/api/incidence")
+def incidence():
+
+    # Query all cancers counts
+    results = db.session.query(cancer_data.State, cancer_data.bladder_count, 
+        cancer_data.brain_count, cancer_data.breast_count, cancer_data.cervix_count,
+        cancer_data.colon_rectum_count, cancer_data.esophagus_count,
+        cancer_data.kidney_count, cancer_data.leukemia_count, cancer_data.liver_count, cancer_data.lung_count, 
+        cancer_data.melanoma_count, cancer_data.non_HodgkinL_count,
+        cancer_data.oral_pharynx_count, cancer_data.ovary_count, cancer_data.pancreas_count, cancer_data.prostate_count,
+        cancer_data.stomach_count, cancer_data.thyroid_count, cancer_data.uterus_count).all()
+
+    # Create a dictionary from the row data and append to a list of all_passengers
+    cancer_counts = []
+    for State, bladder_count, brain_count, breast_count, cervix_count, colon_rectum_count, esophagus_count, kidney_count, leukemia_count, liver_count, lung_count, melanoma_count, non_HodgkinL_count, oral_pharynx_count, ovary_count, pancreas_count, prostate_count, stomach_count, thyroid_count, uterus_count in results:
+        cancer_dict = {}
+        cancer_dict["State"] = State
+        cancer_dict["Bladder cancer incidence"] = bladder_count
+        cancer_dict["Brain cancer incidence"] = brain_count
+        cancer_dict["Breast cancer incidence"] = breast_count
+        cancer_dict["Cervix cancer incidence"] = cervix_count
+        cancer_dict["colon rectum cancer incidence"] = colon_rectum_count
+        cancer_dict["Esophagus cancer incidence"] = esophagus_count
+        cancer_dict["Kidney cancer incidence"] = kidney_count
+        cancer_dict["Leukemia cancer incidence"] = leukemia_count
+        cancer_dict["Liver cancer incidence"] = liver_count
+        cancer_dict["Lung cancer incidence"] = lung_count
+        cancer_dict["Melanoma cancer incidence"] = melanoma_count
+        cancer_dict["NonHodgkinL cancer incidence"] = non_HodgkinL_count
+        cancer_dict["Oral Pharynx cancer incidence"] = oral_pharynx_count
+        cancer_dict["Ovary cancer incidence"] = ovary_count
+        cancer_dict["Pancreas cancer incidence"] = pancreas_count
+        cancer_dict["Prostate cancer incidence"] = prostate_count
+        cancer_dict["Stomach cancer incidence"] = stomach_count
+        cancer_dict["Thyroid cancer incidence"] = thyroid_count
+        cancer_dict["Uterus cancer incidence"] = uterus_count
+        cancer_counts.append(cancer_dict)
+
+    return jsonify(cancer_counts)
+
+
+
+if __name__ == "__main__":
+    app.run()
