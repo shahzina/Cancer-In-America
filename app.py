@@ -278,11 +278,11 @@ def stateriskdata():
     for i, row in df.iterrows():
         c_data.append({
             'State': row["State"],
-            'Crowding %': row["crowding_percent"]
-            '% With Bachelors': row["education_bachelors_percent"]
-            'Median Family Income': row["median_family_income_dollars"]
-            'Uninsured %': row["uninsured_percent"]
-            '>150 Poverty %': row["below_150_poverty_percent"]
+            'Crowding %': row["crowding_percent"],
+            '% With Bachelors': row["education_bachelors_percent"],
+            'Median Family Income': row["median_family_income_dollars"],
+            'Uninsured %': row["uninsured_percent"],
+            '>150 Poverty %': row["below_150_poverty_percent"],
             'Unemployed %': row["unemployed_percent"]
         })
 
