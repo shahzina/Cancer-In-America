@@ -83,10 +83,9 @@ def state():
         state_dict["Unemployment"] = Unemployment
         state_dict["Air Polution"] = Air_Polution
         state_dict["Population"] = Population
-
         state_info.append(state_dict)
 
-    return jsonify(state_dict)
+    return jsonify(state_info)
 
 @app.route("/api/incidence")
 def incidence():
