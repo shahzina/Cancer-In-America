@@ -1,5 +1,7 @@
+import os
 import pandas as pd
 import geojson
+import json
 
 from flask import (
     Flask,
@@ -382,7 +384,13 @@ def mortality():
 
     return jsonify(death_counts)
 
+@app.route("/gz_2010_us_040_00_20m")
+def state_outlines():
+    filename = os.path.join(app.static_folder, 'gz_2010_us_040_00_20m.json')
+    with open(filename) as jsonfile:
+        data = json.load(jsonfile)
 
+    return jsonify(data)
 
 if __name__ == "__main__":
     app.run()
