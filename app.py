@@ -230,9 +230,27 @@ def top5mort():
     return render_template("topfiveMortality.html")
 
 
-@app.route("/map")
-def map():
-    return render_template("map.html")
+@app.route("/breastcancer")
+def breast():
+    return render_template("map_breast.html")
+
+
+@app.route("/coloncancer")
+def colon():
+    return render_template("map_colon.html")
+
+@app.route("/lungcancer")
+def lung():
+    return render_template("map_lung.html")
+
+@app.route("/skincancer")
+def skin():
+    return render_template("map_skin.html")
+
+@app.route("/prostatecancer")
+def prostate():
+    return render_template("map_prostate.html")
+
 
 
 @app.route("/api/risks")
