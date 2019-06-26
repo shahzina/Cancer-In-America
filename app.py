@@ -187,7 +187,7 @@ class Cancer(db.Model):
     no_physical_activity_percent = db.Column(db.Numeric)
 
     def __repr__(self):
-        return '<CancerMap %r>' % (self.name)
+        return '<Cancer %r>' % (self.name)
 
 
 # Create database tables
