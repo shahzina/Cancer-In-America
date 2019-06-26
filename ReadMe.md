@@ -1,13 +1,13 @@
-# Project Data Visualization
+# Project Data Visualization, Cancer in America
+Collaborative project between Chris Catolico, Shahzina Khan, Susi Ng, Leeza Sergeeva
 
-Visualize cancer rates (for select top cancers) in the American cities with a population higher than 700k (~20 cities) depending on certain environmental factors: coastal proximity, rainfall, sun index, elevation, average temperatures, air quality, fast food(beautiful soup web scraping), (social media awareness of cancer types), (List of Superfund sites) [aim for 20 different attributes]. 
-Population statistics borrowed from:
-http://worldpopulationreview.com/us-cities/#cities
+We were trying to visualize different cancer incidence/mortality rates/counts in the US states along with data of risk factors and population demographics.
 
-Data will be presented as US map with drop down menu selection of [Choice of Cancer]. View of the map will show the blobs of red/green intensity color depending on cancer rate. 
-Clicking on the city will show summary of environmental factors specific for it, and cancer rates summary.
-Separate pages to present bar/line graphs comparing data for environmental factors
 
+### Data used:
+Mortality, Incidence, Demographics and Risk Factors data was 
+ubtained from https://statecancerprofiles.cancer.gov/ as CSV files.
+Data was converted into SQLITE database for storage and retreaval.
 
 
 ### Miscellaneous Links:
