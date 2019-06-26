@@ -416,12 +416,28 @@ def state_outlines():
 from flask import request
 from flask import send_file
 
-@app.route('/image')
-def get_image():
+@app.route('/image1')
+def get_image1():
     if request.args.get('type') == '1':
        filename = 'templates\images\image1.jpg'
     else:
        filename = 'templates\images\image1.jpg'
+    return send_file(filename, mimetype='image/gif')
+
+@app.route('/image2')
+def get_image2():
+    if request.args.get('type') == '1':
+       filename = 'templates\images\image2.jpg'
+    else:
+       filename = 'templates\images\image2.jpg'
+    return send_file(filename, mimetype='image/gif')
+
+@app.route('/image3')
+def get_image3():
+    if request.args.get('type') == '1':
+       filename = 'templates\images\image3.jpeg'
+    else:
+       filename = 'templates\images\image3.jpeg'
     return send_file(filename, mimetype='image/gif')
 
 
