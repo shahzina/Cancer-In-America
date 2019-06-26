@@ -21,54 +21,64 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-  <!-- <a class="navbar-brand" href="index.html">Home</a> -->
-  </div>
-
-  <!-- <nav class="navbar navbar-default"> -->
-  <nav class="navbar navbar-default">
-  <div class="container-fluid navbar-custom">
-
-    <div class="row">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle Navigation</span>
+  <div class = "container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <div class="col-s-9 phone-nav">
-          <a class="navbar-brand" href="#" id="logo">Cancer in America</a>
+          <!-- <a class="navbar-brand" href="index.html">Home</a> -->
         </div>
-      </div> 
+
+        
+         <nav class="navbar navbar-default">
+      <div class="container-fluid navbar-custom">
+
+        
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="col-s-9 phone-nav">
+              <a class="navbar-brand" href="/" id="logo">Cancer in America</a>
+            </div>
+          </div> 
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right navbar-right-custom">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Graph about Cancer <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cancer Graphs <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                 <li><a href="state_pie.html">Cancer by State</a></li>
-                  <li><a href="topfiveIncidence.html">Top Five Incidence</a></li>
-                  <li><a href="topfiveMortality.html">Top Five Mortality</a></li>
+                 <li><a href="http://localhost:5000/pie">Cancer by State</a></li>  
+                  <li><a href="http://localhost:5000/top5incd">Top Five Incidence</a></li>    
+                  <li><a href="http://localhost:5000/top5mort">Top Five Mortality</a></li>    
+             
                   
                 </ul>
               </li>
-           <!--   <li><a href="comparison.html">Comparison</a></li> -->
-            <!--  <li><a href="data.html">Data</a></li> -->
+              <!-- for maps --> 
+              <li class="dropdown"> 
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Maps by State <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                 
+                  
+                </ul>
+              </li>
+              <li><a href="http://localhost:5000/map">Map</a></li>
+              <li><a href="http://localhost:5000/about">About</a></li> 
             </ul>
-          </div>      
+          </div>   
           </div>
       </div>
     </nav>
+      
 
 
   <div class="jumbotron">
