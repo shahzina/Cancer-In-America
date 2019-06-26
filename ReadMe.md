@@ -28,6 +28,34 @@ Insurance: Percent uninsured in demographic group, all income levels - Ages <65,
 Poverty: Persons below 150% of poverty - All Ages, All Races (includes Hispanic), Both Sexes
 Workforce: Unemployed - Ages 16+, All Races (includes Hispanic), Both Sexes
 
+List of cancers:
+bladder 
+brain  
+breast  
+breast_insitu  
+cervix  
+child_less_15  
+child_less_20  
+colon_rectum  
+esophagus  
+kidney  
+leukemia  
+liver  
+lung  
+melanoma  
+non_HodgkinL  
+oral_pharynx  
+ovary  
+pancreas  
+prostate  
+stomach  
+thyroid  
+uterus  
+
+Incidence Data & Mortality Data:
+Single year - 2015, 
+Reported by state, 
+All Races (includes Hispanic), Both Sexes, All Ages
 
 
 ### Miscellaneous Links:
