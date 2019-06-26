@@ -53,6 +53,7 @@ thyroid
 uterus  
 
 Incidence Data & Mortality Data:
+Rates and Counts for both.
 Single year - 2015, 
 Reported by state, 
 All Races (includes Hispanic), Both Sexes, All Ages
