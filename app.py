@@ -2,6 +2,8 @@ import os
 import pandas as pd
 import geojson
 import json
+from flask import request
+from flask import send_file
 
 from flask import (
     Flask,
@@ -409,6 +411,19 @@ def state_outlines():
         data = json.load(jsonfile)
 
     return jsonify(data)
+
+
+from flask import request
+from flask import send_file
+
+@app.route('/image')
+def get_image():
+    if request.args.get('type') == '1':
+       filename = 'templates\images\image1.jpg'
+    else:
+       filename = 'templates\images\image1.jpg'
+    return send_file(filename, mimetype='image/gif')
+
 
 if __name__ == "__main__":
     app.run()
