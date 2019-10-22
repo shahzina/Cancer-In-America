@@ -6,7 +6,7 @@ We were trying to visualize different cancer incidence/mortality rates/counts in
 
 ### Data used:
 Mortality, Incidence, Demographics and Risk Factors data was 
-ubtained from https://statecancerprofiles.cancer.gov/ as CSV files.
+obtained from https://statecancerprofiles.cancer.gov/ as CSV files.
 Data was converted into SQLITE database for storage and retreaval.
 
 Risk Factors Data:
